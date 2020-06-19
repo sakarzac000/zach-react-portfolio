@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import PortfolioItem from "./portfolio-item"
-import portfolioItem from "./portfolio-item";
+import axios from "axios"
 
 export default class PortfolioContainer extends Component {
     constructor() {
@@ -10,21 +10,39 @@ export default class PortfolioContainer extends Component {
         this.state = {
             pageTitle: "Welcome to my portfolio",
             isLoading: false,
-            data: [
-                {title: "Apex Tracker", category: "eCommerce", slug: "Apex"},
-                {title: "Codewar Katas", category: "Scheduling", slug: "Codewars"}, 
-                {title: "Fantastic Fries", category: "Enterprise", slug: "Fantastic"},
-                {title: "Book Store", category: "eCommerce", slug: "BookStore"}
-            ]
+            data: []
         }
         
         this.handleFilter = this.handleFilter.bind(this)
     }
 
+    getPortfolioItems() {
+        axios.get('https://zachsakar.devcamp.space/portfolio/portfolio_items')
+        .then(response => {
+         // handle success
+         this.setState({
+            data: response.data.portfolio_items
+         })
+        })
+       .catch(function (error) {
+         // handle error
+         console.log(error);
+        })
+       .finally(function () {
+         // always executed
+        });
+      }
+
     portfolioItems() {
 
+
         return this.state.data.map(item => {
-            return <PortfolioItem title={item.title} url={"google.com"} slug={item.slug}/>;
+            debugger;
+            return (
+            <PortfolioItem 
+            key={item.id}
+            item={item} />
+            );
         });
     }
 
@@ -44,10 +62,15 @@ export default class PortfolioContainer extends Component {
         })
     }
 
+    componentDidMount() {
+        this.getPortfolioItems();
+    }
+
     render() {
         if (this.state.isLoading) {
             return <div>Loading...</div>
         }
+
         return (
             <div>
                 <h2>{this.state.pageTitle}</h2>
