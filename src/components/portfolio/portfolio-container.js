@@ -37,7 +37,6 @@ export default class PortfolioContainer extends Component {
 
 
         return this.state.data.map(item => {
-            debugger;
             return (
             <PortfolioItem 
             key={item.id}
@@ -80,7 +79,9 @@ export default class PortfolioContainer extends Component {
                 <button onClick={() => this.handleFilter('Enterprise')}>Enterprise</button>
                 <button onClick={() => this.handleFilter('Scheduling')}>Scheduling</button>
 
-                {this.portfolioItems()}
+                <div className="portfolio-items-wrapper">
+                    {this.portfolioItems()}
+                </div>
             </div>
         )
     }
