@@ -1,3 +1,9 @@
 .btn {
     @include base-btn();
 }
+
+.sign-out-btn {
+    cursor: pointer;
+    font-size: 0.7rem;
+    float: right;
+}
