@@ -13,5 +13,29 @@
 
     }
 
+    .clickable {
+        cursor: pointer;
+    }
+
+    .toCenter {
+        align-self: center;
+    }
+
+    .actions {
+        align-self: center;
+    }
+    .action-icon {
+        font-size: 1.2em;
+        transition: 0.2s ease-in-out;
+        margin: 0px 10px;
+
+        &:hover {
+            color: $warning
+        }
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
 
 }

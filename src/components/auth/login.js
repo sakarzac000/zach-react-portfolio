@@ -63,9 +63,6 @@ export default class Login extends Component {
             <div>
                 <h1>LOGIN TO ACCESS YOUR DASHBOARD</h1>
 
-                <div>
-                    {this.state.responseUserText}
-                </div>
 
                 <form onSubmit={this.handleSubmit}>
                     <input 
@@ -74,6 +71,7 @@ export default class Login extends Component {
                     name="email" 
                     value = {this.state.email}
                     onChange={this.handleChange}
+                    className="input-element"
                     />
 
                     <input 
@@ -82,6 +80,7 @@ export default class Login extends Component {
                     name="password" 
                     value = {this.state.password}
                     onChange={this.handleChange}
+                    className="input-element"
                     />
 
                     <div>

@@ -8,9 +8,17 @@
     }
 
     .right-column {
+        padding: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: $offwhite;
+        @include input-element;
+        
+        button {
+            @include base-btn
+        }
     }
+    
+
 }
